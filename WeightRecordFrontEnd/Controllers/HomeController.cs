@@ -94,6 +94,22 @@ namespace WeightRecordFrontEnd.Controllers
 			return PartialView(rrData);
 		}
 
+		public async Task<ActionResult> IndexSearchPearlTable(ValuePearl dataPearl)
+		{
+			List<RRWeightView> rrData = new List<RRWeightView>();
+			List<PearlWeightView> pearlData = new List<PearlWeightView>();
+			using (var httpClient = new HttpClient())
+			{
+
+				using (var response = await httpClient.GetAsync("https://localhost:44340/api/weight?partNo=" + dataPearl.partNo + "&sBatchNo=" + dataPearl.sBatch + "&eBatchNo=" + dataPearl.eBatch + "&sDate=" + dataPearl.sDate + "&eDate=" + dataPearl.eDate))
+				{
+					string apiResponse = await response.Content.ReadAsStringAsync();
+					rrData = JsonConvert.DeserializeObject<List<RRWeightView>>(apiResponse).ToList();
+				}
+			}
+
+			return PartialView(rrData);
+		}
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
 		{
