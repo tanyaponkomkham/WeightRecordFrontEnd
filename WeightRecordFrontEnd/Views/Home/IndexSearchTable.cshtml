@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WeightRecordFrontEnd.ViewModels.RRWeightView>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.partNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.serialBatch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.batchNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.serialNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.data)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.partNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.serialBatch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.batchNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.serialNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.data)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

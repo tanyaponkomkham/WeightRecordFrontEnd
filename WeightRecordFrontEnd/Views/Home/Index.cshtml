@@ -1,0 +1,208 @@
+﻿@using WeightRecordFrontEnd.Models
+@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+<!-- Include Bootstrap Select CSS and JS files -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0/dist/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.6.1/dist/css/bootstrap.min.css">
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Include DataTables CSS and JS files -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+<link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/af-2.6.0/date-1.5.1/datatables.min.css" rel="stylesheet">
+
+    <div class="container-xl">
+        <div class="container-lg" style="display: flex; align-items: center;">
+            <label style="margin-right: 150px;">Project</label>
+            <select class="form-control" name="Project" id="Project" style="width: 250px;">
+                <option value="" disabled selected>- Please select project -</option>
+                <option value="RR">RR</option>
+                <option value="Pearl">Pearl</option>
+            </select>
+
+        </div>
+        <br />
+
+        <div class="container-lg" style="display: flex; align-items: center;">
+            <label style="margin-right: 110px;">Part Number</label>
+            <select class="selectpicker" data-live-search="true" name="PartNo" id="PartNo" style="width: 250px;">
+            </select>
+
+        </div>
+        <br>
+        <div class="container-lg" style="display: flex; align-items: center;">
+            <label style="margin-right: 78px;">Batch-Serial from</label>
+
+            <input type="text" class="form-control" style="width: 250px;" name="sBatch" id="sBatch">
+            <label style="margin-left: 100px; margin-right: 100px; ">To</label>
+            <input type="text" class="form-control" style="width: 250px;" name="eBatch" id="eBatch">
+        </div>
+        <div style="display: flex; ">
+            <p style="margin-left: 210px; color: red; font-size: 13px;">Batch-SerialNumber</p>
+            <p style="margin-left: 350px; color: red; font-size: 13px; ">Batch-SerialNumber</p>
+        </div>
+        <div style="display: flex;">
+            <p style="margin-left: 210px; color: red; font-size: 13px; ">Example : 0010-0001</p>
+            <p style="margin-left: 345px; color: red; font-size: 13px; ">Example : 0010-0001</p>
+        </div>
+
+        <br>
+        <div class="container-lg" style="display: flex; align-items: center;">
+            <label style="margin-right: 64px;">Measure Date from</label>
+            <input type="date" class="form-control " style="width: 250px;" name="sDate" id="sDate">
+            <label style="margin-left: 100px; margin-right: 100px; "> To </label>
+            <input type="date" class="form-control " style="width: 250px;" name="eDate" id="eDate">
+        </div>
+        <div style="display: flex; ">
+            <p style="margin-left: 210px; color: red; font-size: 13px;">Measure Date</p>
+            <p style="margin-left: 390px; color: red; font-size: 13px;">Measure Date</p>
+        </div>
+        <div style="display: flex;">
+            <p style="margin-left: 210px; color: red; font-size: 13px; ">Example : 0000-01-01</p>
+            <p style="margin-left: 345px; color: red; font-size: 13px; ">Example : 0000-01-01</p>
+        </div>
+        <CENTER>
+            <button type="submit" class="Search btn btn-primary" name="btnProcess" id="btnProcess">PROCESS</button>
+        </CENTER>
+    </div>
+
+
+<br>
+<br>
+<div class="container">
+    <div id="bindShowData">
+    </div>
+</div>
+<!--<div class="container-xl">
+    <table id="myDataTable" class="display">
+        <thead>
+            <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
+                <th>Column 4</th>
+                <th>Column 5</th>
+                <th>Column 6</th>
+                <th>Column 7</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Row 1 Data 1</td>
+                <td>Row 1 Data 2</td>
+                <td>Row 1 Data 3</td>
+                <td>Row 1 Data 4</td>
+                <td>Row 1 Data 5</td>
+                <td>Row 1 Data 6</td>
+                <td>Row 1 Data 7</td>
+            </tr>
+            <tr>
+                <td>aaaaa</td>
+                <td>Row 1 Data 2</td>
+                <td>Row 1 Data 3</td>
+                <td>Row 1 Data 4</td>
+                <td>Row 1 Data 5</td>
+                <td>Row 1 Data 6</td>
+                <td>Row 1 Data 7</td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0/dist/js/bootstrap-select.min.js"></script>-->
+    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>*@
+    <!--<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/af-2.6.0/date-1.5.1/datatables.min.js"></script>
+</div>-->
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+            // Hide the search input field and label
+            $('#myDataTable').DataTable({
+            });
+
+            $('.selectpicker').selectpicker();
+
+        });
+        // when btn click
+
+
+        $("#Project").change(function () {
+            console.log($.trim($('#Project').val()));
+
+            var project = $.trim($('#Project').val());
+            if (project != "") {
+                if (project == "RR") {
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/Home/GetRRPartNo",
+                        dataType: "json",
+                        data: {},
+                        success: function (data) {
+                            var s = '<option value="">-Please Select PartNo-</option>';
+                            for (var i = 0; i < data.length; i++) {
+                                s += '<option value="' + data[i].partNo + '">' + data[i].partNo + '</option>';
+                            }
+                            $("#PartNo").html(s);
+                            $('#PartNo').selectpicker('refresh');
+                        },
+                        error: function (data) {
+                            alert("The System has some problem..please try it again.");
+                        }
+                    })
+
+
+                }
+                if (project == "Pearl") {
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/Home/GetPearlPartNo",
+                        dataType: "json",
+                        data: {},
+                        success: function (data) {
+                            var s = '<option value="">-Please Select PartNo-</option>';
+                            for (var i = 0; i < data.length; i++) {
+                                s += '<option value="' + data[i].partNo + '">' + data[i].partNo + '</option>';
+                            }
+                            $("#PartNo").html(s);
+                            $('#PartNo').selectpicker('refresh');
+                        },
+                        error: function (data) {
+                            alert("The System has some problem..please try it again.");
+                        }
+                    })
+
+
+                }
+
+            }
+
+        });
+
+
+        $(document).on('click', ".Search", function () {
+            var project = $.trim($('#Project').val());
+            var partNo = $.trim($('#PartNo').val());
+            var sbatch = $.trim($('#sBatch').val());
+            var ebatch = $.trim($('#eBatch').val());
+            var sdate = $.trim($('#sDate').val());
+            var edate = $.trim($('#eDate').val());
+
+            console.log($.trim($('#sBatch').val()));
+            console.log($.trim($('#eBatch').val()));
+
+            $("#bindShowData").load(`/Home/IndexSearchTable` + '?project=' + project + '&partNo=' + partNo + '&sbatch=' + sbatch + '&ebatch=' + ebatch + '&sdate=' + sdate + '&edate=' + edate, function (statusTxt) {
+                if (statusTxt == "error") {
+                    alert("Error occured durring process. Please contact administrator");
+                }
+            });
+        });
+    </script>
+
+}
+
