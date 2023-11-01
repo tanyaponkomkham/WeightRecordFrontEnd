@@ -9,9 +9,11 @@ namespace WeightRecordFrontEnd.ViewModels
 	{
 		public string job { get; set; }
 		public string suffix { get; set; }
-		public string PartNo { get; set; }
+		public string item { get; set; }
+		public string batch { get; set; }
+		public string serial { get; set; }
 		public decimal? weight { get; set; }
-		
-		public DateTime? RecordData { get; set; }
+
+		public DateTime? createdAt { get; set; }
 	}
 }

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<WeightRecordFrontEnd.ViewModels.PearlWeightView>
+@{
+
+    var counter = 1;
+}
+
+<table class="table" id="myDataTable2">
+    <thead>
+        <tr>
+            <th class="text-center">
+                ID
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.job)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.suffix)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.item)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.weight)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.createdAt)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center">
+                    @counter
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.job)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.suffix)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.item)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.weight)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.createdAt)
+                </td>
+            </tr>
+            counter++;
+        }
+    </tbody>
+</table>
+<script>
+
+    $(document).ready(function () {
+
+        $('#myDataTable2').DataTable({
+
+            dom: 'Bfrtip',
+            buttons: [
+                'csv', 'excel'
+            ]
+
+
+
+        });
+
+    });
+</script>

@@ -75,7 +75,6 @@ namespace WeightRecordFrontEnd.Controllers
 		}
 
 
-		//string partNo, string sBatch, string eBatch, string sDate, string eDate
 	
 		public async Task<ActionResult> IndexSearchTable(ValuePearl dataPearl)
 		{
@@ -101,14 +100,14 @@ namespace WeightRecordFrontEnd.Controllers
 			using (var httpClient = new HttpClient())
 			{
 
-				using (var response = await httpClient.GetAsync("https://localhost:44340/api/weight?partNo=" + dataPearl.partNo + "&sBatchNo=" + dataPearl.sBatch + "&eBatchNo=" + dataPearl.eBatch + "&sDate=" + dataPearl.sDate + "&eDate=" + dataPearl.eDate))
+				using (var response = await httpClient.GetAsync("https://localhost:44340/api/Pearl?partNo=" + dataPearl.partNo + "&sBatchNo=" + dataPearl.sBatch + "&eBatchNo=" + dataPearl.eBatch + "&sDate=" + dataPearl.sDate + "&eDate=" + dataPearl.eDate))
 				{
 					string apiResponse = await response.Content.ReadAsStringAsync();
-					rrData = JsonConvert.DeserializeObject<List<RRWeightView>>(apiResponse).ToList();
+					pearlData = JsonConvert.DeserializeObject<List<PearlWeightView>>(apiResponse).ToList();
 				}
 			}
 
-			return PartialView(rrData);
+			return PartialView(pearlData);
 		}
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()

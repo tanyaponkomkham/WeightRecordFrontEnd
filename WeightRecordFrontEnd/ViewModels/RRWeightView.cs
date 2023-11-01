@@ -12,6 +12,6 @@ namespace WeightRecordFrontEnd.ViewModels
 		public string batchNo { get; set; }
 		public string serialNo { get; set; }
 		public decimal? weight { get; set; }
-		public DateTime? data { get; set; }
+		public DateTime? date { get; set; }
 	}
 }
