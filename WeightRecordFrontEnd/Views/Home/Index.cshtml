@@ -6,65 +6,63 @@
 
 
 <div class="container-lg" style="display: flex; align-items: center;">
-    <label style="margin-right: 150px;">Project</label>
+    <label class="font-ptsans" style="margin-right: 150px;">Project</label>
     <select class="form-control" name="Project" id="Project" style="width: 250px;">
         <option value="" disabled selected>- Please select project -</option>
         <option value="RR">RR</option>
         <option value="Pearl">Pearl</option>
     </select>
-
+    <span style="color: red; display: flex; flex-direction: column; margin-top: -30px; margin-left: 10px; font-size: 25px; ">*</span>
 </div>
-<div id="projectError" style="color: red; margin-left: 210px; font-size: 13px;"></div>
+<div id="projectError" style="color: red; margin-left: 220px; font-size: 13px;"></div>
 <br />
+<div class="container-lg form-group required" style="display: flex; align-items: center;">
+        <label class="font-ptsans" style="margin-right: 110px;">Part Number</label>
+          <select class="selectpicker" data-live-search="true" name="PartNo" id="PartNo" style="width: 250px;"></select>
+    <span style="color: red; display: flex; flex-direction: column; margin-top: -30px; margin-left: 10px; font-size: 25px; ">*</span>    
+    </div>
 
-<div class="container-lg" style="display: flex; align-items: center;">
-    <label style="margin-right: 110px;">Part Number</label>
-    <select class="selectpicker" data-live-search="true" name="PartNo" id="PartNo" style="width: 250px;">
-    </select>
-
-</div>
-<div id="partNoError" style="color: red; margin-left: 210px; font-size: 13px;"></div>
+<div id="partNoError" style="color: red; margin-left: 220px; font-size: 13px;"></div>
 <br>
 
 <div class="container-lg" style="display: flex; align-items: center;">
-    <label style="margin-right: 78px;">Batch-Serial from</label>
+    <label class="font-ptsans" style="margin-right: 74px;">Batch-Serial from</label>
     <input type="text" class="form-control" style="width: 250px;" name="sBatch" id="sBatch">
-    <label style="margin-left: 100px; margin-right: 100px; ">To</label>
+    <label class="font-ptsans" style="margin-left: 100px; margin-right: 100px; ">To</label>
     <input type="text" class="form-control" style="width: 250px;" name="eBatch" id="eBatch">
 </div>
 
 <div style="display: flex;">
-    <p style="margin-left: 210px; margin-top: 0px; margin-bottom: 0px; color: red; font-size: 13px;">Batch-SerialNumber</p>
-    <p style="margin-left: 350px; margin-top: 0px; margin-bottom: 0px; color: red; font-size: 13px;">Batch-SerialNumber</p>
+    <p style="margin-left: 220px; margin-top: 0px; margin-bottom: 0px; color: #0C4B8A; font-size: 13px;">Batch-SerialNumber</p>
+    <p style="margin-left: 358px; margin-top: 0px; margin-bottom: 0px; color: #0C4B8A; font-size: 13px;">Batch-SerialNumber</p>
 </div>
 <div style="display: flex;">
-    <p style="margin-left: 210px; margin-top: 0px; margin-bottom: 0px; color: red; font-size: 13px;">Example : 0010-0001</p>
-    <p style="margin-left: 345px; margin-top: 0px; margin-bottom: 0px; color: red; font-size: 13px;">Example : 0010-0001</p>
+    <p style="margin-left: 220px; margin-top: 0px; margin-bottom: 0px; color: #0C4B8A; font-size: 13px;">Example : 0010-0001</p>
+    <p style="margin-left: 355px; margin-top: 0px; margin-bottom: 0px; color: #0C4B8A; font-size: 13px;">Example : 0010-0001</p>
 </div>
 <div style="display: flex;">
-    <div id="sBatchError" style="margin-left: 210px; margin-top: 0px; margin-bottom: 0px; color: red; font-size: 13px;"></div>
-    <div id="eBatchError" style="margin-left: 465px; margin-top: 0px; margin-bottom: 0px; color: red; font-size: 13px;"></div>
+    <div id="sBatchError" style="margin-left: 220px; margin-top: 0px; margin-bottom: 0px; color: red; font-size: 13px;"></div>
+    <div id="eBatchError" style="margin-left: 475px; margin-top: 0px; margin-bottom: 0px; color: red; font-size: 13px;"></div>
 </div>
-
 
 <br>
 <div class="container-lg" style="display: flex; align-items: center;">
-    <label style="margin-right: 64px;">Measure Date from</label>
+    <label class="font-ptsans" style="margin-right: 64px;">Measure Date from</label>
     <input type="date" class="form-control " style="width: 250px;" name="sDate" id="sDate">
-    <label style="margin-left: 100px; margin-right: 100px; "> To </label>
+    <label class="font-ptsans" style="margin-left: 100px; margin-right: 100px; "> To </label>
     <input type="date" class="form-control " style="width: 250px;" name="eDate" id="eDate">
 </div>
 <div style="display: flex; ">
-    <p style="margin-left: 210px; margin-top: 0px; margin-bottom: 0px; color: red; font-size: 13px;">Measure Date</p>
-    <p style="margin-left: 390px; margin-top: 0px; margin-bottom: 0px; color: red; font-size: 13px;">Measure Date</p>
+    <p style="margin-left: 220px; margin-top: 0px; margin-bottom: 0px; color: #0C4B8A; font-size: 13px;">Measure Date</p>
+    <p style="margin-left: 395px; margin-top: 0px; margin-bottom: 0px; color: #0C4B8A; font-size: 13px;">Measure Date</p>
 </div>
 <div style="display: flex;">
-    <p style="margin-left: 210px; margin-top: 0px; margin-bottom: 0px; color: red; font-size: 13px; ">Example : 0000-01-01</p>
-    <p style="margin-left: 345px; margin-top: 0px; margin-bottom: 0px; color: red; font-size: 13px; ">Example : 0000-01-01</p>
+    <p style="margin-left: 220px; margin-top: 0px; margin-bottom: 0px; color: #0C4B8A; font-size: 13px; ">Example : 01-01-2023</p>
+    <p style="margin-left: 350px; margin-top: 0px; margin-bottom: 0px; color: #0C4B8A; font-size: 13px; ">Example : 01-01-2023</p>
 </div>
 <div style="display: flex;">
-    <div id="sDateError" style="margin-left: 210px; margin-top: 0px; margin-bottom: 0px; color: red; font-size: 13px;"></div>
-    <div id="eDateError" style="margin-left: 470px; margin-top: 0px; margin-bottom: 0px; color: red; font-size: 13px; "></div>
+    <div id="sDateError" style="margin-left: 220px; margin-top: 0px; margin-bottom: 0px; color: red; font-size: 13px;"></div>
+    <div id="eDateError" style="margin-left: 475px; margin-top: 0px; margin-bottom: 0px; color: red; font-size: 13px; "></div>
 </div>
 <CENTER>
     <button type="submit" class="Search btn btn-primary" name="btnProcess" id="btnProcess">PROCESS</button>
@@ -72,6 +70,12 @@
 
 <br>
 <br>
+<div id="loadingSpinner" class="text-center" style="display: none;">
+    <div class="spinner-border">
+    </div>
+    <p>Loading...</p>
+</div>
+
 <div class="container-fluid">
     <div id="bindShowData">
     </div>
@@ -83,13 +87,10 @@
     <script>
 
         $(document).ready(function () {
-           
 
             $('.selectpicker').selectpicker();
 
         });
-
-
 
         $("#Project").change(function () {
             console.log($.trim($('#Project').val()));
@@ -147,6 +148,8 @@
 
 
         $(document).on('click', ".Search", function () {
+
+
             var project = $.trim($('#Project').val());
             var partNo = $.trim($('#PartNo').val());
             var sbatch = $.trim($('#sBatch').val());
@@ -162,9 +165,9 @@
             $("#sDateError").text("");
             $("#eDateError").text("");
 
-            var hasError = false; // Flag to track errors
+            var hasError = false;
 
-            // Check for empty fields and display error messages
+
             if (project === "") {
                 $("#projectError").text("Please fill the Project field.");
                 hasError = true;
@@ -196,21 +199,26 @@
             }
 
             if (hasError) {
-                return; // Stop further processing if there are errors
+                return;
             }
+            $("#bindShowData").hide();
+            $("#loadingSpinner").show();
 
-            // Continue with table loading logic
             if (project == "RR") {
                 $("#bindShowData").load(`/Home/IndexSearchTable` + '?project=' + project + '&partNo=' + partNo + '&sbatch=' + sbatch + '&ebatch=' + ebatch + '&sdate=' + sdate + '&edate=' + edate, function (statusTxt) {
                     if (statusTxt == "error") {
                         alert("Error occurred during the process. Please contact the administrator");
                     }
+                    $("#loadingSpinner").hide();
+                    $("#bindShowData").show();
                 });
             } else if (project == "Pearl") {
                 $("#bindShowData").load(`/Home/IndexSearchPearlTable` + '?project=' + project + '&partNo=' + partNo + '&sbatch=' + sbatch + '&ebatch=' + ebatch + '&sdate=' + sdate + '&edate=' + edate, function (statusTxt) {
                     if (statusTxt == "error") {
                         alert("Error occurred during the process. Please contact the administrator");
                     }
+                    $("#loadingSpinner").hide();
+                    $("#bindShowData").show();
                 });
             }
         });
@@ -218,3 +226,16 @@
 
 }
 
+<style>
+    .form-group.required .control-label:after {
+        content: "*";
+        color: red;
+    }
+    .font-signika {
+        font-family: 'Signika', sans-serif;
+    }
+    .font-ptsans {
+        font-family: 'PT Sans', sans-serif;
+    }
+</style>
+  

@@ -4,52 +4,70 @@
     var counter = 1;
 }
 
-<table class="table" id="myDataTable2">
+<table class="row-border hover white-background text-center" id="myDataTable2">
     <thead>
         <tr>
             <th class="text-center">
                 ID
             </th>
             <th class="text-center">
-                @Html.DisplayNameFor(model => model.job)
+                Job
             </th>
             <th class="text-center">
-                @Html.DisplayNameFor(model => model.suffix)
+                Suffix
             </th>
             <th class="text-center">
-                @Html.DisplayNameFor(model => model.item)
+                PartNumber
             </th>
             <th class="text-center">
-                @Html.DisplayNameFor(model => model.weight)
+                Serial Number
             </th>
             <th class="text-center">
-                @Html.DisplayNameFor(model => model.createdAt)
+                Weight
+            </th>
+            <th class="text-center">
+                Measure Date
+            </th>
+            <th class="text-center">
+                Ship Date
             </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td class="text-center">
-                    @counter
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.job)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.suffix)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.item)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.weight)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.createdAt)
-                </td>
-            </tr>
+        <tr>
+            <td class="text-center">
+                @counter
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.job)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.suffix)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.item)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.serial)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.weight)
+            </td>
+            <td class="text-center">
+                @if (item.createdAt.HasValue)
+                {
+                    @item.createdAt.Value.ToString("dd-MM-yyyy")
+                }
+            </td>
+            <td class="text-center">
+                @if (item.shipdate.HasValue)
+                {
+                    @item.shipdate.Value.ToString("dd-MM-yyyy")
+                }
+            </td>
+        </tr>
             counter++;
         }
     </tbody>
@@ -59,15 +77,67 @@
     $(document).ready(function () {
 
         $('#myDataTable2').DataTable({
-
-            dom: 'Bfrtip',
+            "dom": 'lBfrtip',
+            "language": {
+                "lengthMenu": 'Show _MENU_ entries'
+            },
+            "pageLength": 50,
+            "lengthMenu": [50, 75, 100],
+            "buttons": {
+                dom: {
+            button: {
+                className: 'btn btn-primary  '
+            }
+        },
             buttons: [
-                'csv', 'excel'
-            ]
-
-
-
+            {
+                //EXCEL
+                extend: 'csv',
+                //text: '<i class="fas fa-file-excel"></i> EXCEL', //u can define a diferent text or icon
+                title: 'Student Letter Request List',
+            },
+            {
+                //PRINT
+                extend: 'excel',
+                //text: '<i class="fas fa-print"></i> IMPRIMIR',
+                title: 'Student Letter Request List',
+            }
+        ]
+            },
         });
+        $('.dataTables_length select').css('width', '65px', 'background - color', 'white');
+
+
 
     });
 </script>
+<style>
+    div.dataTables_wrapper div.dataTables_processing {
+        float: left;
+        margin-right: 10px;
+    }
+    
+    .dataTables_length select {
+        background-color: white !important;
+        border: 1px solid #000 !important;
+        margin-right: 10px !important;
+        width: 65px !important;
+    }
+    .dataTables_filter input {
+        background-color: white !important;
+    }
+
+    div.dataTables_wrapper div.dataTables_length,
+    div.dataTables_wrapper div.dataTables_buttons {
+        float: left;
+    }
+
+    div.dataTables_length {
+        float: left;
+        margin-top: 4em;
+        margin-right: -12em;
+    }
+    .white-background {
+        background-color: #fff !important;  
+    }
+</style>

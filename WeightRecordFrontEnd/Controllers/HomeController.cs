@@ -31,8 +31,8 @@ namespace WeightRecordFrontEnd.Controllers
 			public string eDate { get; set; }
 
 		}
-		
 
+		
 		private readonly ILogger<HomeController> _logger;
 
 		public HomeController(ILogger<HomeController> logger)
@@ -50,7 +50,7 @@ namespace WeightRecordFrontEnd.Controllers
 			List<GetPartNo> partNo = new List<GetPartNo>();
 			using (var httpClient = new HttpClient())
 			{
-				using (var response = await httpClient.GetAsync("https://localhost:44340/api/Pearl/pearlPartNo"))
+				using (var response = await httpClient.GetAsync("http://192.168.99.46:9026/api/Pearl/pearlPartNo"))
 				{
 					string apiResponse = await response.Content.ReadAsStringAsync();
 					partNo = JsonConvert.DeserializeObject<List<GetPartNo>>(apiResponse).ToList();
@@ -65,7 +65,7 @@ namespace WeightRecordFrontEnd.Controllers
 			List<GetPartNo> partNo = new List<GetPartNo>();
 			using (var httpClient = new HttpClient())
 			{
-				using (var response = await httpClient.GetAsync("https://localhost:44340/api/Weight/weightPartNo"))
+				using (var response = await httpClient.GetAsync("http://192.168.99.46:9026/api/Weight/weightPartNo"))
 				{
 					string apiResponse = await response.Content.ReadAsStringAsync();
 					partNo = JsonConvert.DeserializeObject<List<GetPartNo>>(apiResponse).ToList();
@@ -83,7 +83,7 @@ namespace WeightRecordFrontEnd.Controllers
 			using (var httpClient = new HttpClient())
 			{
 			
-				using (var response = await httpClient.GetAsync("https://localhost:44340/api/weight?partNo=" + dataPearl.partNo + "&sBatchNo=" + dataPearl.sBatch + "&eBatchNo=" + dataPearl.eBatch + "&sDate=" + dataPearl.sDate + "&eDate=" + dataPearl.eDate))
+				using (var response = await httpClient.GetAsync("http://192.168.99.46:9026/api/weight?partNo=" + dataPearl.partNo + "&sBatchNo=" + dataPearl.sBatch + "&eBatchNo=" + dataPearl.eBatch + "&sDate=" + dataPearl.sDate + "&eDate=" + dataPearl.eDate))
 				{
 					string apiResponse = await response.Content.ReadAsStringAsync();
 						rrData = JsonConvert.DeserializeObject<List<RRWeightView>>(apiResponse).ToList();
@@ -100,7 +100,7 @@ namespace WeightRecordFrontEnd.Controllers
 			using (var httpClient = new HttpClient())
 			{
 
-				using (var response = await httpClient.GetAsync("https://localhost:44340/api/Pearl?partNo=" + dataPearl.partNo + "&sBatchNo=" + dataPearl.sBatch + "&eBatchNo=" + dataPearl.eBatch + "&sDate=" + dataPearl.sDate + "&eDate=" + dataPearl.eDate))
+				using (var response = await httpClient.GetAsync("http://192.168.99.46:9026/api/Pearl?partNo=" + dataPearl.partNo + "&sBatchNo=" + dataPearl.sBatch + "&eBatchNo=" + dataPearl.eBatch + "&sDate=" + dataPearl.sDate + "&eDate=" + dataPearl.eDate))
 				{
 					string apiResponse = await response.Content.ReadAsStringAsync();
 					pearlData = JsonConvert.DeserializeObject<List<PearlWeightView>>(apiResponse).ToList();

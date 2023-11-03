@@ -15,5 +15,10 @@ namespace WeightRecordFrontEnd.ViewModels
 		public decimal? weight { get; set; }
 
 		public DateTime? createdAt { get; set; }
+		public DateTime? shipdate { get; set; }
+
+		
+
+	
 	}
 }

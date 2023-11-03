@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="bootstrap-select" Version="1.13.18" />
+    <PackageReference Include="HtmlTags" Version="8.0.0" />
     <PackageReference Include="Jsonize.Serializer.Json.Net" Version="3.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>

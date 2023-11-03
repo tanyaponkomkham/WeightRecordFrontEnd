@@ -4,64 +4,72 @@
 
     var counter = 1;
 }
-<table class="table" id="myDataTable">
+<table class="row-border hover white-background text-center" id="myDataTable">
     <thead>
         <tr>
             <th class="text-center">
                 ID
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.partNo)
+            <th class="text-center">
+                PartNumber
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.serialBatch)
+            <th class="text-center">
+                SerialBatch
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.batchNo)
+            <th class="text-center">
+                SerialNumber
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.serialNo)
+            <th class="text-center">
+                Weight
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.weight)
+            <th class="text-center">
+                Measure Date
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.date)
+            <th class="text-center">
+                Ship Date
             </th>
-
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td class="text-center">
-                @counter
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.partNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.serialBatch)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.batchNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.serialNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.weight)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.date)
-            </td>
-
-        </tr>
+            <tr>
+                <td class="text-center">
+                    @counter
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.partNo)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.serialBatch)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.serialNo)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.weight)
+                </td>
+                <td class="text-center">
+                    @if (item.date.HasValue)
+                    {
+                        @item.date.Value.ToString("dd-MM-yyyy")
+                    }
+                </td>
+                <td class="text-center">
+                    @if (item.shipdate.HasValue)
+                    {
+                        @item.shipdate.Value.ToString("dd-MM-yyyy")
+                    }
+                </td>
+            </tr>
             counter++;
-        
+
         }
     </tbody>
+</table>
+
+<table class="table" id="myDataTable">
+    <!-- Your table structure here -->
 </table>
 
 <script>
@@ -69,15 +77,69 @@
     $(document).ready(function () {
 
         $('#myDataTable').DataTable({
-
-            dom: 'Bfrtip',
-            buttons: [
-                'csv', 'excel'
-            ]
-
-
-
+            "dom": 'lBfrtip',
+            "language": {
+                "lengthMenu": 'Show _MENU_ entries'
+            },
+            "pageLength": 50,
+            "lengthMenu": [50, 75, 100],
+            "buttons": {
+                dom: {
+                    button: {
+                        className: 'btn btn-primary  '
+                    }
+                },
+                buttons: [
+                    {
+                        //EXCEL
+                        extend: 'csv',
+                        //text: '<i class="fas fa-file-excel"></i> EXCEL', //u can define a diferent text or icon
+                        title: 'Student Letter Request List',
+                    },
+                    {
+                        //PRINT
+                        extend: 'excel',
+                        //text: '<i class="fas fa-print"></i> IMPRIMIR',
+                        title: 'Student Letter Request List',
+                    }
+                ]
+            },
         });
+        $('.dataTables_length select').css('width', '65px', 'background - color', 'white');
+
+
 
     });
 </script>
+<style>
+    div.dataTables_wrapper div.dataTables_processing {
+        float: left;
+        margin-right: 10px;
+    }
+
+    .dataTables_length select {
+        background-color: white !important;
+        border: 1px solid #000 !important;
+        margin-right: 10px !important;
+        width: 65px !important;
+    }
+
+    .dataTables_filter input {
+        background-color: white !important;
+    }
+
+    div.dataTables_wrapper div.dataTables_length,
+    div.dataTables_wrapper div.dataTables_buttons {
+        float: left;
+    }
+
+    div.dataTables_length {
+        float: left;
+        margin-top: 4em;
+        margin-right: -12em;
+    }
+
+    .white-background {
+        background-color: #fff !important;
+    }
+</style>

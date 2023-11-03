@@ -13,5 +13,7 @@ namespace WeightRecordFrontEnd.ViewModels
 		public string serialNo { get; set; }
 		public decimal? weight { get; set; }
 		public DateTime? date { get; set; }
+		public DateTime? shipdate { get; set; }
+		
 	}
 }
